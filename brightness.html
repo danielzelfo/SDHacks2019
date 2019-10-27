@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<head>
+    <style type="text/css">
+    html
+    {
+        overflow-x: hidden;
+        overflow-y: hidden;
+    }
+    :root
+    {
+        --brightness : 700;/*{{br}};*/
+        --username : 'Michael';/*{{name}};*/
+        --calcBright : calc(var(--brightness) / 1023);
+    }
+        .container {
+            position: absolute;
+            align-items: center;
+            justify-content: center;
+            animation: spin1 10s infinite linear, rise 5s forwards;
+            display: block;
+            height: 500px;
+            width: 500px;
+            left: 30%;
+            background-color: rgba(255, 100, 0, .5);
+            z-index: 1;
+            border-radius: 50%;
+        }
+        .ray {
+            background-color: rgba(255, 155, 0, .5);
+            width: 410px;
+            height: 410px;
+            position: absolute;
+            margin: auto;
+            left: 0px;
+            right: 0px;
+            bottom: 0px;
+            top: 0px;
+        }
+        .ray1 {
+            z-index: 0;
+            transform: rotate(0deg);
+        }
+        .ray2 {
+            z-index: 0;
+            transform: rotate(30deg);
+        }
+        .ray3 {
+            z-index: 0;
+            transform: rotate(60deg);
+        }
+        #horizon {
+            position: absolute;
+            z-index: 1;
+            bottom: 0px;
+            width: 100%;
+            height: 200px;
+            animation: horizonDimmer 7s forwards;
+        }
+        #sky {
+            position: absolute;
+            z-index: -1;
+            bottom: 0px;
+            width: 100%;
+            height: 100%;
+            animation: skyDimmer 7s forwards;
+        }
+        .today {
+            z-index: 5;
+            font-weight : bold;
+            font-size : 18pt;
+            bottom: 5%;
+            animation : textColor 7s forwards;
+        }
+        @keyframes spin1 {
+        0% { transform: rotate(0deg);}
+        100% { transform: rotate(359deg);}
+        }
+        @keyframes rise {
+            0%{ top: 80% }
+            100%{top: calc(80% - calc(var(--calcBright) * 80%)); }
+        }
+        @keyframes skyDimmer {
+            0%{background-color: rgb(0, 0, 0);}
+            100%{background-color: rgb(0, 0, calc(var(--calcBright)*255));}
+        }
+        @keyframes horizonDimmer {
+            0%{background-color: rgb(0,0,0);}
+            100%{background-color: rgb(0,calc(var(--calcBright)*255),0);}
+        }
+        @keyframes textColor {
+            0%{color : rgb(255, 255, 255)}
+            100%{color : rgb(calc(255 - calc(var(--calcBright) * 255)), rgb(calc(255 - calc(var(--calcBright) * 255))), rgb(calc(255 - calc(var(--calcBright) * 255))));}
+        }
+    </style>
+</head>
+<body>
+        <div id="sky"></div>
+            <h2 class="today"></h2>
+            <script>
+                var day = new Date();
+                document.getElementById("today").innerHTML = day;
+            </script>
+        <div class="container">
+                <div class="ray ray1"></div>
+                <div class="ray ray2"></div>
+                <div class="ray ray3"></div>
+                </div>
+                <div id="horizon"></div>
+</body>
