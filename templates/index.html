@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Home Page</title>
+
+
+
+
+<style>
+body{
+	background-color: #f0f0f0;
+	background-image: url("https://i.imgur.com/Ao9cGYg.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+h1{
+	text-align: center;
+	font-family: Arial Black;
+}
+form{
+	background-color: rgba(255,255,255,.75);
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	position: absolute;
+	width: 300px;
+	height: 110px;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	text-align: center;
+	border: 1px solid black;
+}
+
+form input{
+	background: none;
+}
+form * {
+	left: 50%;
+	top: 50%;
+}
+
+form input[type="submit"]{
+	width: 300px;
+	background-color: rgba(255,255,255,.75);
+	border: 1px solid black;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+}
+
+</style>
+</head>
+
+<body>
+	<h1>Wearable Weather</h1>
+
+	<form action="/live" method="post">
+		<label for="name">Name: </label><br>
+		<input id="name" type="text" name="name"><br><br>
+		<label for="device">Device Name: </label><br>
+		<input id="device" type="text" name="device"><br><br>
+		<input name="submit" type="submit">
+	</form>
+
+</body>
+</html>
